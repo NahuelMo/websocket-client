@@ -13,13 +13,15 @@ export class ChatComponent {
   constructor(private wsService: WebSocketService) {}
 
   ngOnInit(): void {
-    this.wsService.connect('ws://localhost:8080').subscribe((msg) => {
+    // this.wsService.connect('ws://localhost:8080').subscribe((msg) => {
+    this.wsService.connect('https://websocket-server-production-55a3.up.railway.app/').subscribe((msg) => {
       this.messages.push(msg);
     });
   }
 
   sendMessage(): void {
-    this.wsService.connect('ws://localhost:8080').next(this.message);
+    // this.wsService.connect('ws://localhost:8080').next(this.message);
+    this.wsService.connect('https://websocket-server-production-55a3.up.railway.app/').next(this.message);
     this.message = '';
   }
 
